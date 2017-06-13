@@ -1,0 +1,52 @@
+* {
+  font-family: "Roboto Condensed", Arial, sans-serif;
+  font-weight: normal;
+  color: white;
+}
+
+html {
+  height: 100%;
+  background: #00C9FF; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, #00C9FF, #92FE9D); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #00C9FF, #92FE9D); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #00C9FF, #92FE9D); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #00C9FF, #92FE9D); /* Standard syntax */
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container, .footer {
+  max-width: 700px;
+  margin: 2em auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+.weather-info {
+  position: relative;
+}
+
+.column {
+  float:left;
+  width: 33.33%;
+  font-size: 2em;
+}
+
+.unit-change {
+  display: inline-block;
+  background: lightsalmon;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 0.5em 1.5em;
+  margin: 1.5em;
+}
+
+.footer {
+
+}
