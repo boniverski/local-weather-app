@@ -1,22 +1,25 @@
-var skycons = new Skycons({"color": "white"});
-  // on Android, a nasty hack is needed: {"resizeClear": true}
+var longitude, latitude, timeHour, timeFull;
 
-  // you can add a canvas by it's ID...
-  skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+if (navigator.geolocation) {
+    //Return the user's longitude and latitude on page load using HTML5 geolocation API
+    window.onload = function () {
+    var currentPosition;
+    function getCurrentLocation (position) {
+        currentPosition = position;
+        latitude = currentPosition.coords.latitude;
+        longitude = currentPosition.coords.longitude;
+        //AJAX request
+        $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&APPID=5a5a02f356f4f64fe223c5d5a5efde42", function (data) {
+            var rawJson = JSON.stringify(data);
+            var json = JSON.parse(rawJson);
+            updateWeather(json); //Update Weather parameters
+        });
+    }
+    navigator.geolocation.getCurrentPosition(getCurrentLocation);
+  }
+}
 
-  // ...or by the canvas DOM element itself.
-  //skycons.add(document.getElementById("icon2"), Skycons.RAIN);
-
-  // if you're using the Forecast API, you can also supply
-  // strings: "partly-cloudy-day" or "rain".
-
-  // start animation!
-  skycons.play();
-
-  // you can also halt animation with skycons.pause()
-
-  // want to change the icon? no problem:
-  //kycons.set("icon1", Skycons.PARTLY_CLOUDY_NIGHT);
-
-  // want to remove one altogether? no problem:
-  //skycons.remove("icon2");
+function updateWeather (json) {
+	longitude = json.coord.lon;
+	latitude = json.coord.lat;
+}
