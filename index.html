@@ -4,15 +4,27 @@
     <meta charset="utf-8">
     <title>Local Weather App</title>
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    <script type="text/javascript" src="/js/script.js">
+
+    </script>
   </head>
   <body>
     <div class="container">
+      <div class="heading">
 
-      <h1>Weather Forecast for <span id="city">Belgrade</span></h1>
+        <div class="heading-col">
+          <h1>weather<br>forecast</h1>
+        </div>
+        <div class="heading-col">
+           <span id="city">Belgrade</span>
+        </div>
+      </div>
 
-      <span id="weather-icon"><img src="https://cdn.iconscout.com/public/images/icon/free/png-256/brightness-summer-sun-sunny-hot-3e1e237afb4e0615-256x256.png" alt="Sunny">
-      </span>
+      <div class="weather-icon">
+        <img width="180px" height="180px" src="http://www.iconsdb.com/icons/preview/white/sun-4-xxl.png" alt="">
+      </div>
 
       <div class="weather-info">
         <div class="column">
@@ -22,16 +34,13 @@
           <span id="temperature">29 &#8451;</span>
         </div>
         <div class="column">
-          <span id="weather-description">Cloudy</span>
+          <span id="weather-description">Sky is clear</span>
         </div>
       </div>
 
       <div class="unit-change">
         &#8451; / &#8457;
       </div>
-    </div>
-    <div class="footer">
-      coded by boniverski
     </div>
   </body>
 </html>

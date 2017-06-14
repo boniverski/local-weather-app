@@ -1,16 +1,19 @@
 * {
+  margin: 0;
+  padding: 0;
   font-family: "Roboto Condensed", Arial, sans-serif;
   font-weight: normal;
   color: white;
+  box-sizing: border-box;
 }
 
 html {
   height: 100%;
-  background: #00C9FF; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left top, #00C9FF, #92FE9D); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom right, #00C9FF, #92FE9D); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom right, #00C9FF, #92FE9D); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom right, #00C9FF, #92FE9D); /* Standard syntax */
+  background: #fd746c; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, #fd746c, #feb47b/*#ff9068*/); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #fd746c, #feb47b); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #fd746c, #feb47b); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #fd746c, #feb47b); /* Standard syntax */
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -24,12 +27,41 @@ html {
   text-align: center;
 }
 
+.heading {
+  position: relative;
+  clear: both;
+  overflow: hidden;
+  padding-bottom: 1em;
+}
+
+.heading-col {
+  float: left;
+  width: 50%;
+}
+
 h1 {
+  font-family: "Pacifico", Arial, sans-serif;
+  font-size: 2.6em;
+  line-height: 1.1;
+}
+
+#city {
   font-size: 3em;
+  font-family: "Pacifico", Arial, sans-serif;
+}
+
+.weather-icon {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  clear: both;
+  overflow: hidden;
+  height: 250px;
 }
 
 .weather-info {
   position: relative;
+  clear: both;
+  overflow: hidden;
 }
 
 .column {
@@ -48,5 +80,9 @@ h1 {
 }
 
 .footer {
+  position: relative;
+  bottom: 0;
+
+
 
 }
