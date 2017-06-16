@@ -20,6 +20,9 @@ html {
   -o-background-size: cover;
   background-repeat: no-repeat;
 }
+.container {
+  max-height: 700px;
+}
 
 .container, .footer {
   max-width: 700px;
@@ -41,13 +44,13 @@ html {
 
 h1 {
   font-family: "Pacifico", Arial, sans-serif;
-  font-size: 2.6em;
+  font-size: 2.2em;
   line-height: 1.1;
 }
 
 #city {
-  font-size: 3em;
-  font-family: "Pacifico", Arial, sans-serif;
+  font-size: 2.9em;
+  font-family: "Pacifico", Arial, sans-serif
 }
 
 .weather-icon {
@@ -78,11 +81,20 @@ h1 {
   margin: 1.5em;
 }
 
+.unit-change:hover {
+  background-color: #FDFDFD;
+  color: salmon;
+}
+
+.unit-change:active {
+  background-color: lightgray;
+}
+
 .footer {
   position: relative;
   bottom: 0;
 }
 
-#hidden {
+.hidden {
   display: none;
 }
