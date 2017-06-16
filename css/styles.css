@@ -3,7 +3,7 @@
   padding: 0;
   font-family: "Roboto Condensed", Arial, sans-serif;
   font-weight: normal;
-  color: white;
+  color: #fdfdfd;
   box-sizing: border-box;
 }
 
@@ -72,9 +72,8 @@ h1 {
 
 .unit-change {
   display: inline-block;
-  background: lightsalmon;
-  border: 1px solid transparent;
-  border-radius: 4px;
+  border: 2px solid #FDFDFD;
+  border-radius: 20px;
   padding: 0.5em 1.5em;
   margin: 1.5em;
 }
@@ -82,7 +81,8 @@ h1 {
 .footer {
   position: relative;
   bottom: 0;
+}
 
-
-
+#hidden {
+  display: none;
 }
