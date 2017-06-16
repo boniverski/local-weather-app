@@ -1,2 +1,2 @@
 # local-weather-app
-Local Weather App - freeCodeCamp Intermediate Project
+[Local Weather App](https://boniverski.github.io/local-weather-app/) - freeCodeCamp Intermediate Project
