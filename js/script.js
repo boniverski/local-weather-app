@@ -10,7 +10,7 @@ $(document).ready(function() {
       var longitude = position.coords.longitude;
 
       //Get local time from TimeZoneDB.com
-      $.getJSON("https://cors-anywhere.herokuapp.com/http://api.timezonedb.com/v2/get-time-zone?key=9KO15I9T9P1B&format=json&callback=?&by=position&lat=" + latitude + "&lng=" + longitude, function (timezone) {
+      $.getJSON("http://api.timezonedb.com/v2/get-time-zone?key=9KO15I9T9P1B&format=json&callback=?&by=position&lat=" + latitude + "&lng=" + longitude, function (timezone) {
 
         // Create a new JavaScript Date object based on the timestamp
         //Timestapm minus gmtOffset to get UTC time
