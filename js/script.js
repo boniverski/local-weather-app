@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  
+
   //Global variables
   var hours, longitude, latitude;
 
@@ -10,7 +10,7 @@ $(document).ready(function() {
       var longitude = position.coords.longitude;
 
       //Get local time from TimeZoneDB.com
-      $.getJSON("http://api.timezonedb.com/v2/get-time-zone?key=9KO15I9T9P1B&format=json&callback=?&by=position&lat=" + latitude + "&lng=" + longitude, function (timezone) {
+      $.getJSON("https://api.timezonedb.com/v2/get-time-zone?key=9KO15I9T9P1B&format=json&callback=?&by=position&lat=" + latitude + "&lng=" + longitude, function (timezone) {
 
         // Create a new JavaScript Date object based on the timestamp
         //Timestapm minus gmtOffset to get UTC time
@@ -25,7 +25,7 @@ $(document).ready(function() {
         $("#local-time").html(formattedTime); //Adding formatted time to HTML
 
         //Getting weather condition data from OpenWeatherMap
-        $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&APPID=5a5a02f356f4f64fe223c5d5a5efde42", function (data) {
+        $.getJSON("https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&APPID=5a5a02f356f4f64fe223c5d5a5efde42", function (data) {
 
           //Fixing temperature in celsius and fahrenheits
           var temp = [(data.main.temp - 273).toFixed(0) + "&#8451;", (1.8 * (data.main.temp - 273) + 32).toFixed(0) + "&#8457;"];
