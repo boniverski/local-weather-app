@@ -1,15 +1,11 @@
 * {
-  margin: 0;
-  padding: 0;
-  font-family: "Roboto Condensed", Arial, sans-serif;
-  font-weight: normal;
-  color: #fdfdfd;
-  box-sizing: border-box;
+  font-family: "Raleway", Helvetica, Arial, sans-serif;
+  line-height: normal;
 }
 
 html {
   height: 100%;
-  background: #fd746c; /* For browsers that do not support gradients */
+  background: #fd746c;
   background: -webkit-linear-gradient(left top, #fd746c, #feb47b/*#ff9068*/); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(bottom right, #fd746c, #feb47b); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(bottom right, #fd746c, #feb47b); /* For Firefox 3.6 to 15 */
@@ -20,65 +16,42 @@ html {
   -o-background-size: cover;
   background-repeat: no-repeat;
 }
+
 .container {
-  max-height: 700px;
-}
-
-.container, .footer {
-  max-width: 700px;
-  margin: 2em auto;
-  text-align: center;
-}
-
-.heading {
   position: relative;
-  clear: both;
-  overflow: hidden;
-  padding-bottom: 1em;
-}
-
-.heading-col {
-  float: left;
-  width: 50%;
-}
-
-h1 {
-  font-family: "Pacifico", Arial, sans-serif;
-  font-size: 2.2em;
-  line-height: 1.1;
+  max-width: 700px;
+  max-height: 700px;
+  margin: 2em auto;
 }
 
 #city {
-  font-size: 2.9em;
-  font-family: "Pacifico", Arial, sans-serif
+  display: block;
+  padding-top: 0.5em;
+  font-size: 2.5em;
+  font-family: "Raleway", Arial, sans-serif;
 }
 
 .weather-icon {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  clear: both;
-  overflow: hidden;
+  margin-top: 2em;
   height: 250px;
 }
 
 .weather-info {
-  position: relative;
-  clear: both;
-  overflow: hidden;
+  display: relative;
+  font-family: "Raleway", Arial, sans-serif;
+  font-size: 1.6em;
+  margin-bottom: 1.5em;
 }
 
-.column {
-  float:left;
-  width: 33.33%;
-  font-size: 2em;
+#temp-celsius, #temp-fahrenheit {
+  font-weight: 800;
+  font-size: 1.7em;
 }
 
 .unit-change {
-  display: inline-block;
   border: 2px solid #FDFDFD;
   border-radius: 20px;
   padding: 0.5em 1.5em;
-  margin: 1.5em;
 }
 
 .unit-change:hover {
@@ -90,9 +63,15 @@ h1 {
   background-color: lightgray;
 }
 
-.footer {
+footer {
   position: relative;
   bottom: 0;
+  padding: 1em 1em 0 1em;
+  text-align: center;
+}
+
+footer p {
+  font-size: 1em;
 }
 
 .hidden {

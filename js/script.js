@@ -28,16 +28,26 @@ $(document).ready(function() {
         $.getJSON("https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&APPID=5a5a02f356f4f64fe223c5d5a5efde42", function (data) {
 
           //Fixing temperature in celsius and fahrenheits
-          var temp = [(data.main.temp - 273).toFixed(0) + "&#8451;", (1.8 * (data.main.temp - 273) + 32).toFixed(0) + "&#8457;"];
+          var temp = [(data.main.temp - 273).toFixed(0) + "&deg;C", (1.8 * (data.main.temp - 273) + 32).toFixed(0) + "&deg;F"];
+          var highestTemp = [(data.main.temp_max - 273).toFixed(0) + "&deg;", (1.8 * (data.main.temp_max - 273) + 32).toFixed(0) + "&deg;"]
+          var lowestTemp = [(data.main.temp_min - 273).toFixed(0) + "&deg;", (1.8 * (data.main.temp_min - 273) + 32).toFixed(0) + "&deg;"]
 
           //Adding weather data to HTML
-          $("#city").html(data.name);
+          $("#city").html(data.name + ", " + data.sys.country);
+
+          $("#high-and-low-c").html("<i class='fa fa-long-arrow-up' aria-hidden='true'></i>" + " " + highestTemp[0] + " " + "<i class='fa fa-long-arrow-down' aria-hidden='true'></i>" + " " +lowestTemp[0]);
+          $("#high-and-low-f").html("<i class='fa fa-long-arrow-up' aria-hidden='true'></i>" + " " + highestTemp[1] + " " + "<i class='fa fa-long-arrow-down' aria-hidden='true'></i>" + " " +lowestTemp[1]);
+
           $("#temp-celsius").html(temp[0]);
           $("#temp-fahrenheit").html(temp[1]);
+
           $(".unit-change").click(function () {
             $("#temp-fahrenheit").toggle();
             $("#temp-celsius").toggle();
+            $("#high-and-low-f").toggle();
+            $("#high-and-low-c").toggle();
           });
+
           $("#weather-description").html(data.weather[0].description);
 
           //Skycons - weather icons
@@ -68,6 +78,10 @@ $(document).ready(function() {
               skycons.set("animated-icon", Skycons.SLEET);
           } else if (weather.indexOf("snow") >= 0) {
               skycons.set("animated-icon", Skycons.SNOW);
+          } else if (weather.indexOf("mist") >= 0) {
+              skycons.set("animated-icon", Skycons.FOG);
+          } else if (weather.indexOf("wind") >= 0) {
+            skycons.set("animated-icon", Skycons.WIND);
           }
         })
       });
