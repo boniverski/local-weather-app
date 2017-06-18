@@ -6,6 +6,7 @@
 
 html {
   height: 100%;
+
   background: #fd746c;
   background: -webkit-linear-gradient(left top, #fd746c, #feb47b/*#ff9068*/); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(bottom right, #fd746c, #feb47b); /* For Opera 11.1 to 12.0 */
@@ -16,6 +17,7 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .container {
@@ -38,6 +40,7 @@ html {
   height: 200px;
 }
 
+/*Contains humidity, temperature and description */
 .weather-info {
   font-family: "Raleway", Arial, sans-serif;
   font-size: 1.6em;
@@ -45,11 +48,7 @@ html {
   margin-top: 0.5em;
 }
 
-#temp-celsius, #temp-fahrenheit {
-  font-weight: 800;
-  font-size: 1.7em;
-}
-
+/*Temperature's unit converter */
 .unit-change {
   border: 2px solid #FDFDFD;
   border-radius: 20px;
@@ -65,6 +64,16 @@ html {
   background-color: lightgray;
 }
 
+#temp-celsius, #temp-fahrenheit {
+  font-weight: 800;
+  font-size: 1.7em;
+}
+
+.hidden { /*Toggle Celsius/Fahrenheit on button click*/
+  display: none;
+}
+
+/*----------------------------*/
 footer {
   position: relative;
   bottom: 0;
@@ -74,10 +83,6 @@ footer {
 
 footer p {
   font-size: 0.8em;
-}
-
-.hidden {
-  display: none;
 }
 
 /* For devices up to 720px screen widht*/
