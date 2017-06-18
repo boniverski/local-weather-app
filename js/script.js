@@ -93,7 +93,11 @@ $(document).ready(function() {
           } else if (weather.indexOf("mist") >= 0) {
               skycons.set("animated-icon", Skycons.FOG);
           } else if (weather.indexOf("wind") >= 0) {
-            skycons.set("animated-icon", Skycons.WIND);
+              skycons.set("animated-icon", Skycons.WIND);
+          } else if (weather.indexOf("drizzle") >= 0) {
+              skycons.set("animated-icon", Skycons.RAIN);
+          } else if (weather.indexOf("breeze") >= 0) {
+              skycons.set("animated-icon", Skycons.WIND);
           }
         })
       });
