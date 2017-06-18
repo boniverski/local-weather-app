@@ -79,6 +79,7 @@ footer p {
   display: none;
 }
 
+/* For devices up to 720px screen widht*/
 @media only screen and (max-width: 719px) {
   .container {
     margin: 0;
@@ -118,7 +119,8 @@ footer p {
     font-size: 0.7em;
   }
 
-  .col {
-    width: 100%;
+  .unit-change {
+    background-color: #FDFDFD;
+    color: #333447;
   }
 }

@@ -1,3 +1,9 @@
+/**
+ * Title: Local Weather App (for FreeCodeCamp), June 2017
+ * Author: Boško Rabrenović
+ * https://github.com/boniverski/local-weather-app
+ * Description: A local weather web-app that generates your local weather based on geo-coordinates. You have to allow browser for checking current location.
+ */
 $(document).ready(function() {
 
   //Global variables
