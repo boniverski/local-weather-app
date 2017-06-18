@@ -125,7 +125,7 @@ p {
 }
 
 .col-1-sm {
-  width: 4.33%;
+  width: 4.29.33%;
 }
 
 .col-2-sm {
@@ -149,7 +149,7 @@ p {
 }
 
 .col-7-sm {
-  width: 54.33%;
+  width: 54.29.33%;
 }
 
 .col-8-sm {
@@ -161,7 +161,7 @@ p {
 }
 
 .col-10-sm {
-  width: 79.33%;
+  width: 79.29.33%;
 }
 
 .col-11-sm {
@@ -190,7 +190,7 @@ p {
 
 @media only screen and (min-width: 45em) {  /* 720px */
   .col-1 {
-    width: 4.33%;
+    width: 4.29.33%;
   }
 
   .col-2 {
@@ -214,7 +214,7 @@ p {
   }
 
   .col-7 {
-    width: 54.33%;
+    width: 54.29.33%;
   }
 
   .col-8 {
@@ -226,7 +226,7 @@ p {
   }
 
   .col-10 {
-    width: 79.33%;
+    width: 79.29.33%;
   }
 
   .col-11 {

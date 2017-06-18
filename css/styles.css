@@ -1,6 +1,7 @@
 * {
   font-family: "Raleway", Helvetica, Arial, sans-serif;
   line-height: normal;
+  box-sizing: border-box;
 }
 
 html {
@@ -33,11 +34,11 @@ html {
 
 .weather-icon {
   margin-top: 2em;
+  margin-left: auto;
   height: 200px;
 }
 
 .weather-info {
-  display: relative;
   font-family: "Raleway", Arial, sans-serif;
   font-size: 1.6em;
   margin-bottom: 1.5em;
@@ -56,7 +57,7 @@ html {
 
 .unit-change:hover {
   background-color: #FDFDFD;
-  color: salmon;
+  color: #333447;
 }
 
 .unit-change:active {
@@ -83,7 +84,7 @@ footer p {
     margin: 0;
     width: 100%;
   }
-  
+
   .weather-info {
     display: -webkit-box;
     display: -moz-box;
