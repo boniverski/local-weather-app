@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=480, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,target-densitydpi=device-dpi, user-scalable=no" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Local Weather App</title>
     <link rel="stylesheet" href="css/simple-grid.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -31,27 +31,26 @@
 
       <!-- Weather Information -->
       <div class="row weather-info">
-        <div class="col-4 center ">
-          <span id="high-and-low-c" class="temp-icons">&#8212;&#8212;</span>
-          <span id="high-and-low-f" class="temp-icons hidden">&#8212; &#8212;</span>
+        <div class="col-4 center first_div">
+          Humidity: <span id="humidity">&#8212;</span>
         </div>
-        <div class="col-4 center">
+        <div class="col-4 center second_div">
           <span id="temp-celsius">&#8212;</span>
           <span id="temp-fahrenheit" class="hidden">&#8212;</span>
         </div>
-        <div class="col-4 center">
+        <div class="col-4 center third_div">
           <span id="weather-description">&#8212;</span>
         </div>
       </div>
 
       <div class="row">
         <div class="col-12 center">
-          <span class="unit-change">&#8451; / &#8457;</span>
+          <span class="unit-change">&deg;C / &deg;F</span>
         </div>
       </div>
     </div>
     <footer class="col-12 center">
-      <p>&lt;/&gt; by boniverski 2017</p>
+      <p>Coded by Boško Rabrenović</p>
     </footer>
   </body>
 </html>

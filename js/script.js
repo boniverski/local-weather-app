@@ -29,26 +29,32 @@ $(document).ready(function() {
 
           //Fixing temperature in celsius and fahrenheits
           var temp = [(data.main.temp - 273).toFixed(0) + "&deg;C", (1.8 * (data.main.temp - 273) + 32).toFixed(0) + "&deg;F"];
-          var highestTemp = [(data.main.temp_max - 273).toFixed(0) + "&deg;", (1.8 * (data.main.temp_max - 273) + 32).toFixed(0) + "&deg;"]
-          var lowestTemp = [(data.main.temp_min - 273).toFixed(0) + "&deg;", (1.8 * (data.main.temp_min - 273) + 32).toFixed(0) + "&deg;"]
+          // var highestTemp = [(data.main.temp_max - 273).toFixed(0) + "&deg;", (1.8 * (data.main.temp_max - 273) + 32).toFixed(0) + "&deg;"]
+          // var lowestTemp = [(data.main.temp_min - 273).toFixed(0) + "&deg;", (1.8 * (data.main.temp_min - 273) + 32).toFixed(0) + "&deg;"]
 
           //Adding weather data to HTML
           $("#city").html(data.name + ", " + data.sys.country);
 
-          $("#high-and-low-c").html("<i class='fa fa-long-arrow-up' aria-hidden='true'></i>" + " " + highestTemp[0] + " " + "<i class='fa fa-long-arrow-down' aria-hidden='true'></i>" + " " +lowestTemp[0]);
-          $("#high-and-low-f").html("<i class='fa fa-long-arrow-up' aria-hidden='true'></i>" + " " + highestTemp[1] + " " + "<i class='fa fa-long-arrow-down' aria-hidden='true'></i>" + " " +lowestTemp[1]);
-
+          // $("#high-and-low-c").html("<i class='fa fa-long-arrow-up' aria-hidden='true'></i>" + " " + highestTemp[0] + " " + "<i class='fa fa-long-arrow-down' aria-hidden='true'></i>" + " " +lowestTemp[0]);
+          // $("#high-and-low-f").html("<i class='fa fa-long-arrow-up' aria-hidden='true'></i>" + " " + highestTemp[1] + " " + "<i class='fa fa-long-arrow-down' aria-hidden='true'></i>" + " " +lowestTemp[1]);
+          $("#humidity").html(data.main.humidity + "%");
           $("#temp-celsius").html(temp[0]);
           $("#temp-fahrenheit").html(temp[1]);
 
           $(".unit-change").click(function () {
             $("#temp-fahrenheit").toggle();
             $("#temp-celsius").toggle();
-            $("#high-and-low-f").toggle();
-            $("#high-and-low-c").toggle();
+            // $("#high-and-low-f").toggle();
+            // $("#high-and-low-c").toggle();
           });
 
-          $("#weather-description").html(data.weather[0].description);
+          //Capitalize first letter of weather description
+          var oldString = data.weather[0].description;
+          function capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+          }
+
+          $("#weather-description").html(capitalize(oldString));
 
           //Skycons - weather icons
           var skycons = new Skycons({"color": "#FDFDFD"});
