@@ -4,9 +4,7 @@
   box-sizing: border-box;
 }
 
-html {
-  height: 100%;
-
+body {
   background: #fd746c;
   background: -webkit-linear-gradient(left top, #fd746c, #feb47b/*#ff9068*/); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(bottom right, #fd746c, #feb47b); /* For Opera 11.1 to 12.0 */
