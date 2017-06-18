@@ -105,7 +105,7 @@ p {
 
 .row [class^="col"] {
   float: left;
-  margin: 0.5rem 2%;
+  margin: 0.5rem auto;
   min-height: 0.125rem;
 }
 
