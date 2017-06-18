@@ -42,6 +42,7 @@ html {
   font-family: "Raleway", Arial, sans-serif;
   font-size: 1.6em;
   margin-bottom: 1.5em;
+  margin-top: 1em;
 }
 
 #temp-celsius, #temp-fahrenheit {
