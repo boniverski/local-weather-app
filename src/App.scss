@@ -3,8 +3,10 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center; }
-  .wrapper .app {
+  justify-content: center;
+  .app {
     background: #ffde3c;
     max-width: 500px;
-    height: 500px; }
+    height: 500px;
+  }
+}
