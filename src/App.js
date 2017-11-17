@@ -96,25 +96,16 @@ class App extends Component {
     const hasError = this.state.error;
 
     return(
-      <div className="wrapper">
-        <div className="app">
-          { !hasError ?
-            <div>
-              <h2>location: {this.state.time} {this.state.latitude} {this.state.longitude} {this.state.description}</h2>
-              <i className={this.state.icon}></i>
-
-            </div>
-            : (hasError)}
-        </div>
+      <div className="app">
+        { !hasError ?
+          <div>
+            <h2>location: {this.state.time} {this.state.latitude} {this.state.longitude} {this.state.description}</h2>
+            <i className={this.state.icon}></i>
+          </div>
+          : (hasError)}
       </div>
     )
   }
 }
-
-// const Icon = (props) => {
-//   return(
-//     <i className={props}></i>
-//   )
-// }
 
 export default App;
