@@ -1,4 +1,9 @@
 .app {
   background: #ffde3c;
   width: 500px;
-  height: 500px; }
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .app__wrapper {
+    text-align: center; }

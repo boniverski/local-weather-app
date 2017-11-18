@@ -24,7 +24,7 @@ const getLocation = () => {
 const getTime = (data) => {
 
   const date = new Date(data.dt * 1000);
-  const hours = (date.getHours().toString().length === 1) ? ('0' + date.getHours()) : (date.getMinutes());
+  const hours = (date.getHours().toString().length === 1) ? ('0' + date.getHours()) : (date.getHours());
   const minutes = (date.getMinutes().toString().length === 1) ? ('0' + date.getMinutes()) : (date.getMinutes());
   const formattedTime = hours + ':' + minutes;
 
@@ -40,10 +40,15 @@ class App extends Component {
       latitude: null,
       longitude: null,
       error: '',
-      description: '',
       time: '',
+      location: '',
+      country: '',
       sunrise: '',
       sunset: '',
+      temp: '',
+      tempUnit: '',
+      description: '',
+      humidity: '',
       icon: ''
     }
   }
@@ -74,12 +79,20 @@ class App extends Component {
       const currentTime = response.dt;
       const sunrise = response.sys.sunrise;
       const sunset = response.sys.sunset;
+      const tempC = (response.main.temp - 273).toFixed(0) + ' C';
+      const tempF = (1.8 * (response.main.temp - 273) + 32).toFixed(0) + ' F';
 
       this.setState({
-        description: response.weather[0].description,
         time: formattedTime,
+        location: response.name,
+        country: response.sys.country,
         sunrise: response.sys.sunrise,
         sunset: response.sys.sunset,
+        tempC: tempC,
+        tempF: tempF,
+        description: response.weather[0].description,
+        humidity: response.main.humidity + '%',
+        pressure: response.main.pressure + 'mb',
         icon: (currentTime > sunrise && currentTime < sunset) ? ('wi wi-owm-day-' + response.weather[0].id + '') : ('wi wi-owm-night-' + response.weather[0].id + '')
       })
 
@@ -91,6 +104,11 @@ class App extends Component {
     });
   }
 
+  handleTempToggle(e) {
+    const prevTempUnit = this.state.tempUnit;
+    prevTempUnit === 'C' ? this.setState({tempUnit: 'F'}) : this.setState({tempUnit: 'C'});
+  };
+
   render() {
 
     const hasError = this.state.error;
@@ -98,11 +116,19 @@ class App extends Component {
     return(
       <div className="app">
         { !hasError ?
-          <div>
-            <h2>location: {this.state.time} {this.state.latitude} {this.state.longitude} {this.state.description}</h2>
-            <i className={this.state.icon}></i>
-          </div>
-          : (hasError)}
+            <div className="app__wrapper">
+              <h2>{this.state.location}, {this.state.country}</h2>
+              <button onClick={this.handleTempToggle.bind(this)}>Toggle</button>
+              <div>
+                {
+                  (this.state.tempUnit === 'C') ?
+                    <h3>{this.state.tempF}</h3> :
+                    <h3>{this.state.tempC}</h3>
+                }
+              </div>
+              <i className={this.state.icon}></i>
+            </div>
+         : (hasError) }
       </div>
     )
   }
