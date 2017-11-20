@@ -20,7 +20,7 @@ const getLocation = () => {
   return location;
 };
 
-//Converts Unix timestamp
+//Convert Unix timestamp
 const getTime = (data) => {
 
   const date = new Date(data.dt * 1000);
@@ -46,7 +46,7 @@ class App extends Component {
       sunrise: '',
       sunset: '',
       temp: '',
-      tempUnit: '',
+      tempUnit: 'F', // changing to 'C', Fahrenheit temperature would be default
       description: '',
       humidity: '',
       icon: ''
@@ -67,13 +67,18 @@ class App extends Component {
         error: `${e}`
       });
     });
+
   }
 
-  //Callback function for getLocation() - Fetching weather data with Open Weather Api
+  //Callback for getLocation() - Fetching weather data from Open Weather Map
   getWeather() {
+
     fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=${this.state.latitude}&lon=${this.state.longitude}&APPID=5a5a02f356f4f64fe223c5d5a5efde42`)
     .then(data => data.json())
     .then((response) => {
+      document.getElementById('loading').style.display = 'none'; //hide loading spinner
+      document.getElementById('btn').style.display = 'inline-block'; //hide loading spinner
+
       console.log(response);
       const formattedTime = getTime(response);
       const currentTime = response.dt;
@@ -81,6 +86,7 @@ class App extends Component {
       const sunset = response.sys.sunset;
       const tempC = (response.main.temp - 273).toFixed(0) + ' C';
       const tempF = (1.8 * (response.main.temp - 273) + 32).toFixed(0) + ' F';
+      const iconID = response.weather[0].id;
 
       this.setState({
         time: formattedTime,
@@ -93,8 +99,8 @@ class App extends Component {
         description: response.weather[0].description,
         humidity: response.main.humidity + '%',
         pressure: response.main.pressure + 'mb',
-        icon: (currentTime > sunrise && currentTime < sunset) ? ('wi wi-owm-day-' + response.weather[0].id + '') : ('wi wi-owm-night-' + response.weather[0].id + '')
-      })
+        icon: (currentTime > sunrise && currentTime < sunset) ? ('wi wi-owm-day-' + iconID + '') : ('wi wi-owm-night-' + iconID + '')
+      });
 
     })
     .catch((e) => {
@@ -115,18 +121,20 @@ class App extends Component {
 
     return(
       <div className="app">
+        <div id="loading">Loading</div>
         { !hasError ?
             <div className="app__wrapper">
-              <h2>{this.state.location}, {this.state.country}</h2>
-              <button onClick={this.handleTempToggle.bind(this)}>Toggle</button>
-              <div>
+              <h2>{this.state.location} {this.state.country}</h2>
+              <div className="weather-temp">
                 {
                   (this.state.tempUnit === 'C') ?
                     <h3>{this.state.tempF}</h3> :
                     <h3>{this.state.tempC}</h3>
                 }
               </div>
+              <a id='btn' className='btn btn-default' onClick={this.handleTempToggle.bind(this)}>{this.state.tempUnit}</a>
               <i className={this.state.icon}></i>
+              <h4 className="weather-description">{this.state.description}</h4>
             </div>
          : (hasError) }
       </div>

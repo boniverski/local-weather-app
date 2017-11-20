@@ -7,3 +7,5 @@
   align-items: center; }
   .app__wrapper {
     text-align: center; }
+    .app__wrapper .btn {
+      display: none; }
