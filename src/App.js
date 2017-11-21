@@ -23,10 +23,10 @@ const getLocation = () => {
 //Convert Unix timestamp
 const getTime = (data) => {
 
-  const date = new Date(data.dt * 1000);
-  const hours = (date.getHours().toString().length === 1) ? ('0' + date.getHours()) : (date.getHours());
-  const minutes = (date.getMinutes().toString().length === 1) ? ('0' + date.getMinutes()) : (date.getMinutes());
-  const formattedTime = hours + ':' + minutes;
+  const date = new Date(data.dt * 1000),
+        hours = (date.getHours().toString().length === 1) ? ('0' + date.getHours()) : (date.getHours()),
+        minutes = (date.getMinutes().toString().length === 1) ? ('0' + date.getMinutes()) : (date.getMinutes()),
+        formattedTime = hours + ':' + minutes;
 
   return formattedTime;
 }
@@ -46,7 +46,7 @@ class App extends Component {
       sunrise: '',
       sunset: '',
       temp: '',
-      tempUnit: 'F', // changing to 'C', Fahrenheit temperature would be default
+      tempUnit: '°F', // changing to 'C', Fahrenheit temperature would be default
       description: '',
       humidity: '',
       icon: ''
@@ -76,17 +76,18 @@ class App extends Component {
     fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=${this.state.latitude}&lon=${this.state.longitude}&APPID=5a5a02f356f4f64fe223c5d5a5efde42`)
     .then(data => data.json())
     .then((response) => {
-      document.getElementById('loading').style.display = 'none'; //hide loading spinner
-      document.getElementById('btn').style.display = 'inline-block'; //hide loading spinner
+
+      document.getElementById('loadingSpinner').style.display = 'none'; //hide loading spinner
+      document.getElementById('btn').style.display = 'inline-block'; //show button after data is loaded
 
       console.log(response);
-      const formattedTime = getTime(response);
-      const currentTime = response.dt;
-      const sunrise = response.sys.sunrise;
-      const sunset = response.sys.sunset;
-      const tempC = (response.main.temp - 273).toFixed(0) + ' C';
-      const tempF = (1.8 * (response.main.temp - 273) + 32).toFixed(0) + ' F';
-      const iconID = response.weather[0].id;
+      const formattedTime = getTime(response),
+            currentTime = response.dt,
+            sunrise = response.sys.sunrise,
+            sunset = response.sys.sunset,
+            tempC = (response.main.temp - 273).toFixed(0) + '°C',
+            tempF = (1.8 * (response.main.temp - 273) + 32).toFixed(0) + '°F',
+            iconID = response.weather[0].id;
 
       this.setState({
         time: formattedTime,
@@ -105,14 +106,14 @@ class App extends Component {
     })
     .catch((e) => {
       this.setState({
-        error: `&{e}`
+        error: `${e}`
       });
-    });
+    })
   }
 
   handleTempToggle(e) {
     const prevTempUnit = this.state.tempUnit;
-    prevTempUnit === 'C' ? this.setState({tempUnit: 'F'}) : this.setState({tempUnit: 'C'});
+    prevTempUnit === '°C' ? this.setState({tempUnit: '°F'}) : this.setState({tempUnit: '°C'});
   };
 
   render() {
@@ -120,23 +121,27 @@ class App extends Component {
     const hasError = this.state.error;
 
     return(
-      <div className="app">
-        <div id="loading">Loading</div>
+      <div className='app'>
+        <div id='loadingSpinner'></div>
+
         { !hasError ?
-            <div className="app__wrapper">
-              <h2>{this.state.location} {this.state.country}</h2>
-              <div className="weather-temp">
+
+            <div className='app__wrapper'>
+              <h2 className='weather-location'>{this.state.location}</h2>
+              <div className='weather-temp'>
                 {
-                  (this.state.tempUnit === 'C') ?
+                  this.state.tempUnit === '°C' ?
                     <h3>{this.state.tempF}</h3> :
                     <h3>{this.state.tempC}</h3>
                 }
+                <i className={this.state.icon}></i>
               </div>
+              <h4 className='weather-description'>{this.state.description}</h4>
               <a id='btn' className='btn btn-default' onClick={this.handleTempToggle.bind(this)}>{this.state.tempUnit}</a>
-              <i className={this.state.icon}></i>
-              <h4 className="weather-description">{this.state.description}</h4>
             </div>
-         : (hasError) }
+
+           : hasError
+         }
       </div>
     )
   }

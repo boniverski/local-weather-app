@@ -1,11 +1,42 @@
 .app {
-  background: #ffde3c;
-  width: 500px;
-  height: 500px;
+  background: linear-gradient(135deg, #007991 -20%, #78ffd6 120%);
+  width: 340px;
+  height: 550px;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+  border-radius: 2rem; }
   .app__wrapper {
-    text-align: center; }
+    color: white;
+    text-align: center;
+    align-self: baseline;
+    width: 100%; }
+    .app__wrapper .weather-temp {
+      display: flex;
+      align-items: center;
+      margin-top: 15rem; }
+      .app__wrapper .weather-temp * {
+        flex-grow: 1;
+        align-self: baseline;
+        font-size: 5rem; }
+    .app__wrapper .weather-description {
+      margin-top: 2rem; }
     .app__wrapper .btn {
-      display: none; }
+      display: none;
+      margin-top: 16rem;
+      width: 10rem; }
+
+#loadingSpinner {
+  pointer-events: none;
+  width: 3rem;
+  height: 3rem;
+  border: 0.6rem solid transparent;
+  border-color: transparent;
+  border-top-color: white;
+  border-radius: 50%;
+  animation: loadingspin 1s linear infinite; }
+
+@keyframes loadingspin {
+  100% {
+    transform: rotate(360deg); } }
