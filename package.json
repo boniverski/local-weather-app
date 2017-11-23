@@ -1,7 +1,8 @@
 {
   "name": "weather-react",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
+  "homepage": "https://boniverski.github.io/local-weather-app",
   "dependencies": {
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
@@ -13,9 +14,13 @@
     "start": "npm-run-all -p watch-css start-js",
     "start-js": "react-scripts start",
     "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "build-js": "react-scripts build",
+    "deploy": "npm run build&&gh-pages -d build --branch gh-pages --repo https://github.com/boniverski/local-weather-app",
+    "build": "npm-run-all build-css build-js"
   },
   "devDependencies": {
-    "webpack": "^3.8.1"
+    "webpack": "^3.8.1",
+    "gh-pages": "^1.0.0"
   }
 }

@@ -5,8 +5,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
   border-radius: 2rem; }
+  .app #loadingSpinner {
+    pointer-events: none;
+    width: 3rem;
+    height: 3rem;
+    border: 0.6rem solid transparent;
+    border-color: transparent;
+    border-top-color: white;
+    border-radius: 50%;
+    animation: loadingspin 1s linear infinite; }
+
+@keyframes loadingspin {
+  100% {
+    transform: rotate(360deg); } }
   .app__wrapper {
     color: white;
     text-align: center;
@@ -26,17 +40,3 @@
       display: none;
       margin-top: 16rem;
       width: 10rem; }
-
-#loadingSpinner {
-  pointer-events: none;
-  width: 3rem;
-  height: 3rem;
-  border: 0.6rem solid transparent;
-  border-color: transparent;
-  border-top-color: white;
-  border-radius: 50%;
-  animation: loadingspin 1s linear infinite; }
-
-@keyframes loadingspin {
-  100% {
-    transform: rotate(360deg); } }

@@ -8,15 +8,27 @@ $blue: linear-gradient(135deg, #007991 -20%, #78ffd6 120%);
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   box-shadow: $shadow-external-big;
   border-radius: 2rem;
+  #loadingSpinner {
+  	pointer-events: none;
+  	width: 3rem;
+  	height: 3rem;
+  	border: 0.6rem solid transparent;
+  	border-color: transparent;
+  	border-top-color: white;
+  	border-radius: 50%;
+  	animation: loadingspin 1s linear infinite;
+    @keyframes loadingspin {
+      100% {transform: rotate(360deg)}
+    }
+  }
   &__wrapper {
     color: white;
     text-align: center;
     align-self: baseline;
     width: 100%;
-    .weather-location {
-    }
     .weather-temp {
       display: flex;
       align-items: center;
@@ -33,19 +45,5 @@ $blue: linear-gradient(135deg, #007991 -20%, #78ffd6 120%);
       margin-top: 16rem;
       width: 10rem;
     }
-  }
-}
-
-#loadingSpinner {
-	pointer-events: none;
-	width: 3rem;
-	height: 3rem;
-	border: 0.6rem solid transparent;
-	border-color: transparent;
-	border-top-color: white;
-	border-radius: 50%;
-	animation: loadingspin 1s linear infinite;
-  @keyframes loadingspin {
-    100% {transform: rotate(360deg)}
   }
 }

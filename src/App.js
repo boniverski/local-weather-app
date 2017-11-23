@@ -77,7 +77,7 @@ class App extends Component {
     .then(data => data.json())
     .then((response) => {
 
-      document.getElementById('loadingSpinner').style.display = 'none'; //hide loading spinner
+      document.getElementById('loadingSpinner').remove(); //hide loading spinner
       document.getElementById('btn').style.display = 'inline-block'; //show button after data is loaded
 
       console.log(response);
