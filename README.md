@@ -4,11 +4,11 @@
 #### v2.0 November 22, 2017 [[DEMO](https://boniverski.github.io/local-weather-app/)]
  + Built with [`create-react-app`](https://github.com/facebookincubator/create-react-app)
  + Error handling with JS Promises (resolve, reject, fetch)
- + Icons by weathericons.io
+ + Icons by [weathericons.io](https://erikflowers.github.io/weather-icons/)
 
 #### v1.0 Jun 19, 2017 [[DEMO](https://codepen.io/boniverski/pen/EXNBjg)]
- + Powered by OpenWeatherMap API and Skycons
- + Fetching data with jQuery.getJSON()
+ + Powered by [OpenWeatherMap API](https://openweathermap.org/) and [Skycons](https://darkskyapp.github.io/skycons/)
+ + Getting data with `jQuery.getJSON()`
 
 #### User Story:
  + I can see the weather in my current location
