@@ -47,7 +47,7 @@ class App extends Component {
       sunset: '',
       temp: '',
       tempUnit: '°F', // changing to 'C', Fahrenheit temperature would be default
-      description: '',
+      weatherDescription: '',
       humidity: '',
       icon: ''
     }
@@ -80,14 +80,18 @@ class App extends Component {
       document.getElementById('loadingSpinner').remove(); //hide loading spinner
       document.getElementById('btn').style.display = 'inline-block'; //show button after data is loaded
 
-      console.log(response);
       const formattedTime = getTime(response),
             currentTime = response.dt,
             sunrise = response.sys.sunrise,
             sunset = response.sys.sunset,
             tempC = (response.main.temp - 273).toFixed(0) + '°C',
             tempF = (1.8 * (response.main.temp - 273) + 32).toFixed(0) + '°F',
-            iconID = response.weather[0].id;
+            iconID = response.weather[0].id,
+
+            weatherDescription = () => {
+              const getDescription = response.weather[0].description;
+              return getDescription.charAt(0).toUpperCase() + getDescription.slice(1);
+            }
 
       this.setState({
         time: formattedTime,
@@ -97,7 +101,7 @@ class App extends Component {
         sunset: response.sys.sunset,
         tempC: tempC,
         tempF: tempF,
-        description: response.weather[0].description,
+        weatherDescription: weatherDescription(),
         humidity: response.main.humidity + '%',
         pressure: response.main.pressure + 'mb',
         icon: (currentTime > sunrise && currentTime < sunset) ? ('wi wi-owm-day-' + iconID + '') : ('wi wi-owm-night-' + iconID + '')
@@ -131,12 +135,14 @@ class App extends Component {
               <div className='weather-temp'>
                 {
                   this.state.tempUnit === '°C' ?
-                    <h3>{this.state.tempF}</h3> :
-                    <h3>{this.state.tempC}</h3>
+                    <div>{this.state.tempF}</div> :
+                    <div>{this.state.tempC}</div>
                 }
-                <i className={this.state.icon}></i>
+                <div>
+                  <i className={this.state.icon}></i>
+                </div>
               </div>
-              <h4 className='weather-description'>{this.state.description}</h4>
+              <h4 className='weather-description'>{this.state.weatherDescription}</h4>
               <a id='btn' className='btn btn-default' onClick={this.handleTempToggle.bind(this)}>{this.state.tempUnit}</a>
             </div>
 

@@ -3,6 +3,7 @@ $blue: linear-gradient(135deg, #007991 -20%, #78ffd6 120%);
 
 .app {
   background: $blue;
+  color: white;
   width: 340px;
   height: 550px;
   display: flex;
@@ -11,6 +12,8 @@ $blue: linear-gradient(135deg, #007991 -20%, #78ffd6 120%);
   flex-direction: column;
   box-shadow: $shadow-external-big;
   border-radius: 2rem;
+  text-align: center;
+  padding: 0 2rem;
   #loadingSpinner {
   	pointer-events: none;
   	width: 3rem;

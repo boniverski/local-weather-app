@@ -1,5 +1,6 @@
 .app {
   background: linear-gradient(135deg, #007991 -20%, #78ffd6 120%);
+  color: white;
   width: 340px;
   height: 550px;
   display: flex;
@@ -7,7 +8,9 @@
   align-items: center;
   flex-direction: column;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
-  border-radius: 2rem; }
+  border-radius: 2rem;
+  text-align: center;
+  padding: 0 2rem; }
   .app #loadingSpinner {
     pointer-events: none;
     width: 3rem;
