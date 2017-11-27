@@ -14,7 +14,7 @@ $blue: linear-gradient(135deg, #007991 -20%, #78ffd6 120%);
   border-radius: 2rem;
   text-align: center;
   padding: 0 2rem;
-  #loadingSpinner {
+  #loading-spinner {
   	pointer-events: none;
   	width: 3rem;
   	height: 3rem;
@@ -42,7 +42,10 @@ $blue: linear-gradient(135deg, #007991 -20%, #78ffd6 120%);
         font-size: 5rem;
       }
     }
-    .weather-description { margin-top: 2rem; }
+    .weather-description {
+      margin-top: 2rem;
+      font-size: 2rem;
+    }
     .btn {
       display: none;
       margin-top: 16rem;

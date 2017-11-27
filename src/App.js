@@ -36,6 +36,7 @@ class App extends Component {
   constructor(props){
     super(props);
 
+    this.handleTempToggle = this.handleTempToggle.bind(this);
     this.state = {
       latitude: null,
       longitude: null,
@@ -46,7 +47,7 @@ class App extends Component {
       sunrise: '',
       sunset: '',
       temp: '',
-      tempUnit: '°F', // changing to 'C', Fahrenheit temperature would be default
+      tempUnit: '°F', // changing to 'C', Fahrenheit will be default
       weatherDescription: '',
       humidity: '',
       icon: ''
@@ -56,17 +57,18 @@ class App extends Component {
   componentDidMount() {
 
     getLocation()
-    .then((position) => {
-      this.setState({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-      }, this.getWeather);
-    })
-    .catch((e) => {
-      this.setState({
-        error: `${e}`
+      .then((position) => {
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        }, this.getWeather);
+      })
+      .catch((e) => {
+        console.log(e);
+        this.setState({
+          error: 'Something went wrong! Error is logged in console.'
+        });
       });
-    });
 
   }
 
@@ -74,45 +76,46 @@ class App extends Component {
   getWeather() {
 
     fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=${this.state.latitude}&lon=${this.state.longitude}&APPID=5a5a02f356f4f64fe223c5d5a5efde42`)
-    .then(data => data.json())
-    .then((response) => {
+      .then(data => data.json())
+      .then((response) => {
 
-      document.getElementById('loadingSpinner').remove(); //hide loading spinner
-      document.getElementById('btn').style.display = 'inline-block'; //show button after data is loaded
+        document.getElementById('loading-spinner').remove();
+        document.getElementById('btn').style.display = 'inline-block'; //show button after data is loaded
 
-      const formattedTime = getTime(response),
-            currentTime = response.dt,
-            sunrise = response.sys.sunrise,
-            sunset = response.sys.sunset,
-            tempC = (response.main.temp - 273).toFixed(0) + '°C',
-            tempF = (1.8 * (response.main.temp - 273) + 32).toFixed(0) + '°F',
-            iconID = response.weather[0].id,
+        const formattedTime = getTime(response),
+              currentTime = response.dt,
+              sunrise = response.sys.sunrise,
+              sunset = response.sys.sunset,
+              tempC = (response.main.temp - 273).toFixed(0) + '°C',
+              tempF = (1.8 * (response.main.temp - 273) + 32).toFixed(0) + '°F',
+              iconID = response.weather[0].id,
 
-            weatherDescription = () => {
-              const getDescription = response.weather[0].description;
-              return getDescription.charAt(0).toUpperCase() + getDescription.slice(1);
-            }
+              weatherDescription = () => {
+                const getDescription = response.weather[0].description;
+                return getDescription.charAt(0).toUpperCase() + getDescription.slice(1);
+              }
 
-      this.setState({
-        time: formattedTime,
-        location: response.name,
-        country: response.sys.country,
-        sunrise: response.sys.sunrise,
-        sunset: response.sys.sunset,
-        tempC: tempC,
-        tempF: tempF,
-        weatherDescription: weatherDescription(),
-        humidity: response.main.humidity + '%',
-        pressure: response.main.pressure + 'mb',
-        icon: (currentTime > sunrise && currentTime < sunset) ? ('wi wi-owm-day-' + iconID + '') : ('wi wi-owm-night-' + iconID + '')
-      });
+        this.setState({
+          time: formattedTime,
+          location: response.name,
+          country: response.sys.country,
+          sunrise: response.sys.sunrise,
+          sunset: response.sys.sunset,
+          tempC: tempC,
+          tempF: tempF,
+          weatherDescription: weatherDescription(),
+          humidity: response.main.humidity + '%',
+          pressure: response.main.pressure + 'mb',
+          icon: (currentTime > sunrise && currentTime < sunset) ? ('wi wi-owm-day-' + iconID + '') : ('wi wi-owm-night-' + iconID + '')
+        });
 
-    })
-    .catch((e) => {
-      this.setState({
-        error: `${e}`
-      });
-    })
+      })
+      .catch((e) => {
+        console.log(e);
+        this.setState({
+          error: 'Something went wrong! Error is logged in console.'
+        });
+      })
   }
 
   handleTempToggle(e) {
@@ -121,17 +124,18 @@ class App extends Component {
   };
 
   render() {
-
     const hasError = this.state.error;
 
     return(
       <div className='app'>
-        <div id='loadingSpinner'></div>
+        <div id='loading-spinner'></div>
 
         { !hasError ?
 
             <div className='app__wrapper'>
-              <h2 className='weather-location'>{this.state.location}</h2>
+              <h2 className='weather-location'>
+                {this.state.location}
+              </h2>
               <div className='weather-temp'>
                 {
                   this.state.tempUnit === '°C' ?
@@ -142,12 +146,14 @@ class App extends Component {
                   <i className={this.state.icon}></i>
                 </div>
               </div>
-              <h4 className='weather-description'>{this.state.weatherDescription}</h4>
-              <a id='btn' className='btn btn-default' onClick={this.handleTempToggle.bind(this)}>{this.state.tempUnit}</a>
+              <div className='weather-description'>{this.state.weatherDescription}</div>
+              <a id='btn' className='btn btn-default' onClick={this.handleTempToggle}>
+                {this.state.tempUnit}
+              </a>
             </div>
 
-           : hasError
-         }
+          : hasError }
+
       </div>
     )
   }
