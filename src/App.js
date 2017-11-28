@@ -80,7 +80,7 @@ class App extends Component {
       .then((response) => {
 
         document.getElementById('loading-spinner').remove();
-        document.getElementById('btn').style.display = 'inline-block'; //show button after data is loaded
+        document.getElementById('btn').style.display = 'inline-block'; // Display button after data is loaded
 
         const formattedTime = getTime(response),
               currentTime = response.dt,
