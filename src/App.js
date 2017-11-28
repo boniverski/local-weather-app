@@ -50,6 +50,7 @@ class App extends Component {
       tempUnit: '°F', // changing to 'C', Fahrenheit will be default
       weatherDescription: '',
       humidity: '',
+      pressure: '',
       icon: ''
     }
   }
@@ -86,6 +87,8 @@ class App extends Component {
               currentTime = response.dt,
               sunrise = response.sys.sunrise,
               sunset = response.sys.sunset,
+              humidity = 'Humidity: ' + response.main.humidity + '%',
+              pressure = 'Pressure: ' + response.main.pressure + 'mb',
               tempC = (response.main.temp - 273).toFixed(0) + '°C',
               tempF = (1.8 * (response.main.temp - 273) + 32).toFixed(0) + '°F',
               iconID = response.weather[0].id,
@@ -104,8 +107,8 @@ class App extends Component {
           tempC: tempC,
           tempF: tempF,
           weatherDescription: weatherDescription(),
-          humidity: response.main.humidity + '%',
-          pressure: response.main.pressure + 'mb',
+          humidity: humidity,
+          pressure: pressure,
           icon: (currentTime > sunrise && currentTime < sunset) ? ('wi wi-owm-day-' + iconID + '') : ('wi wi-owm-night-' + iconID + '')
         });
 
@@ -147,6 +150,14 @@ class App extends Component {
                 </div>
               </div>
               <div className='weather-description'>{this.state.weatherDescription}</div>
+              <duv className='weather-features'>
+                <div>
+                  {this.state.humidity}
+                </div>
+                <div>
+                  {this.state.pressure}
+                </div>
+              </duv>
               <a id='btn' className='btn btn-default' onClick={this.handleTempToggle}>
                 {this.state.tempUnit}
               </a>

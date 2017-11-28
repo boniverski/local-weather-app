@@ -32,15 +32,20 @@
     .app__wrapper .weather-temp {
       display: flex;
       align-items: center;
-      margin-top: 15rem; }
+      margin-top: 14rem; }
       .app__wrapper .weather-temp * {
-        flex-grow: 1;
+        width: 50%;
         align-self: baseline;
         font-size: 5rem; }
     .app__wrapper .weather-description {
       margin-top: 2rem;
       font-size: 2rem; }
+    .app__wrapper .weather-features {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 2rem; }
     .app__wrapper .btn {
+      margin-top: 14rem;
       display: none;
-      margin-top: 16rem;
       width: 10rem; }

@@ -35,9 +35,9 @@ $blue: linear-gradient(135deg, #007991 -20%, #78ffd6 120%);
     .weather-temp {
       display: flex;
       align-items: center;
-      margin-top: 15rem;
+      margin-top: 14rem;
       * {
-        flex-grow: 1;
+        width: 50%;
         align-self: baseline;
         font-size: 5rem;
       }
@@ -46,9 +46,15 @@ $blue: linear-gradient(135deg, #007991 -20%, #78ffd6 120%);
       margin-top: 2rem;
       font-size: 2rem;
     }
+    .weather-features {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 2rem;
+    }
     .btn {
+      margin-top: 14rem;
       display: none;
-      margin-top: 16rem;
       width: 10rem;
     }
   }
