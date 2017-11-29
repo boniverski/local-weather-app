@@ -36,7 +36,6 @@ class App extends Component {
   constructor(props){
     super(props);
 
-    this.handleTempToggle = this.handleTempToggle.bind(this);
     this.state = {
       latitude: null,
       longitude: null,
@@ -92,6 +91,7 @@ class App extends Component {
               tempC = (response.main.temp - 273).toFixed(0) + '°C',
               tempF = (1.8 * (response.main.temp - 273) + 32).toFixed(0) + '°F',
               iconID = response.weather[0].id,
+              icon = (currentTime > sunrise && currentTime < sunset) ? ('wi wi-owm-day-' + iconID + '') : ('wi wi-owm-night-' + iconID + ''),
 
               weatherDescription = () => {
                 const getDescription = response.weather[0].description;
@@ -109,7 +109,7 @@ class App extends Component {
           weatherDescription: weatherDescription(),
           humidity: humidity,
           pressure: pressure,
-          icon: (currentTime > sunrise && currentTime < sunset) ? ('wi wi-owm-day-' + iconID + '') : ('wi wi-owm-night-' + iconID + '')
+          icon: icon
         });
 
       })
@@ -121,7 +121,7 @@ class App extends Component {
       })
   }
 
-  handleTempToggle(e) {
+  handleTempToggle = (e) => {
     const prevTempUnit = this.state.tempUnit;
     prevTempUnit === '°C' ? this.setState({tempUnit: '°F'}) : this.setState({tempUnit: '°C'});
   };
