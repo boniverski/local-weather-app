@@ -63,8 +63,8 @@ class App extends Component {
           longitude: position.coords.longitude
         }, this.getWeather);
       })
-      .catch((e) => {
-        console.log(e);
+      .catch((err) => {
+        console.error(err);
         this.setState({
           error: 'Something went wrong! Error is logged in console.'
         });
@@ -72,7 +72,7 @@ class App extends Component {
 
   }
 
-  //Callback for getLocation() - Fetching weather data from Open Weather Map
+  //Callback for getLocation()
   getWeather() {
 
     fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=${this.state.latitude}&lon=${this.state.longitude}&APPID=5a5a02f356f4f64fe223c5d5a5efde42`)
@@ -91,7 +91,9 @@ class App extends Component {
               tempC = (response.main.temp - 273).toFixed(0) + '°C',
               tempF = (1.8 * (response.main.temp - 273) + 32).toFixed(0) + '°F',
               iconID = response.weather[0].id,
-              icon = (currentTime > sunrise && currentTime < sunset) ? ('wi wi-owm-day-' + iconID + '') : ('wi wi-owm-night-' + iconID + ''),
+              icon = (currentTime > sunrise && currentTime < sunset)
+                        ? ('wi wi-owm-day-' + iconID + '')
+                        : ('wi wi-owm-night-' + iconID + ''),
 
               weatherDescription = () => {
                 const getDescription = response.weather[0].description;
@@ -113,8 +115,8 @@ class App extends Component {
         });
 
       })
-      .catch((e) => {
-        console.log(e);
+      .catch((err) => {
+        console.error(err);
         this.setState({
           error: 'Something went wrong! Error is logged in console.'
         });
@@ -123,7 +125,9 @@ class App extends Component {
 
   handleTempToggle = (e) => {
     const prevTempUnit = this.state.tempUnit;
-    prevTempUnit === '°C' ? this.setState({tempUnit: '°F'}) : this.setState({tempUnit: '°C'});
+    prevTempUnit === '°C'
+      ? this.setState({tempUnit: '°F'})
+      : this.setState({tempUnit: '°C'});
   };
 
   render() {
@@ -141,23 +145,23 @@ class App extends Component {
               </h2>
               <div className='weather-temp'>
                 {
-                  this.state.tempUnit === '°C' ?
-                    <div>{this.state.tempF}</div> :
-                    <div>{this.state.tempC}</div>
+                  this.state.tempUnit === '°C'
+                    ? <div>{this.state.tempF}</div>
+                    : <div>{this.state.tempC}</div>
                 }
                 <div>
                   <i className={this.state.icon}></i>
                 </div>
               </div>
               <div className='weather-description'>{this.state.weatherDescription}</div>
-              <duv className='weather-features'>
+              <div className='weather-features'>
                 <div>
                   {this.state.humidity}
                 </div>
                 <div>
                   {this.state.pressure}
                 </div>
-              </duv>
+              </div>
               <a id='btn' className='btn btn-default' onClick={this.handleTempToggle}>
                 {this.state.tempUnit}
               </a>
