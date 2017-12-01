@@ -138,34 +138,37 @@ class App extends Component {
         <div id='loading-spinner'></div>
 
         { !hasError ?
-
-            <div className='app__wrapper'>
-              <h2 className='weather-location'>
-                {this.state.location}
-              </h2>
-              <div className='weather-temp'>
-                {
-                  this.state.tempUnit === '°C'
-                    ? <div>{this.state.tempF}</div>
-                    : <div>{this.state.tempC}</div>
-                }
-                <div>
-                  <i className={this.state.icon}></i>
+              <div className='container'>
+                <div className='weather-location'>
+                  {this.state.location}
+                </div>
+                <div className='weather-temp'>
+                  {
+                    this.state.tempUnit === '°C'
+                      ? <div>{this.state.tempF}</div>
+                      : <div>{this.state.tempC}</div>
+                  }
+                  <div>
+                    <i className={this.state.icon}></i>
+                  </div>
+                </div>
+                <div className='weather-descr'>
+                  {this.state.weatherDescription}
+                </div>
+                <div className='weather-features'>
+                  <div>
+                    {this.state.humidity}
+                  </div>
+                  <div>
+                    {this.state.pressure}
+                  </div>
+                </div>
+                <div className='weather-button'>
+                  <a id='btn' onClick={this.handleTempToggle}>
+                    {this.state.tempUnit}
+                  </a>
                 </div>
               </div>
-              <div className='weather-description'>{this.state.weatherDescription}</div>
-              <div className='weather-features'>
-                <div>
-                  {this.state.humidity}
-                </div>
-                <div>
-                  {this.state.pressure}
-                </div>
-              </div>
-              <a id='btn' className='btn btn-default' onClick={this.handleTempToggle}>
-                {this.state.tempUnit}
-              </a>
-            </div>
 
           : hasError }
 

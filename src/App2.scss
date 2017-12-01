@@ -30,12 +30,6 @@ $blue: linear-gradient(135deg, #007991 -20%, #78ffd6 120%);
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: 60px 300px 130px 50px 50px;
     grid-gap: 5px;
-    grid-template-areas:
-    "l"
-    "t"
-    "d"
-    "f"
-    "b";
     text-align: center;
     justify-content: center;
     align-items: center;

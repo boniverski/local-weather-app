@@ -3,6 +3,9 @@
 ##### [Medium blog post](https://medium.com/@bosko.rabrenovic/react-diaries-local-weather-app-23dd70dcae2f)
 
 
+#### v2.1 December 1, 2017
+ + CSS Grid implemented
+
 #### v2.0 November 22, 2017 [[DEMO](https://boniverski.github.io/local-weather-app/)]
  + Built with [`create-react-app`](https://github.com/facebookincubator/create-react-app)
  + Error handling with JS Promises (resolve, reject, fetch)
